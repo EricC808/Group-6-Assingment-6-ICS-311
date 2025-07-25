@@ -1,6 +1,6 @@
 # main.py
 
-from your_module import build_graph, shortest_path_group1  # Replace 'your_module' with your actual Python file name
+from shortest_path import shortest_path_group1
 
 def main():
     # Create a graph for testing (replace with your graph format)
