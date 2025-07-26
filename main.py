@@ -1,6 +1,9 @@
 # main.py
 
 from shortest_path import shortest_path_group1
+from trendPosts import Post, filter_posts, get_trending_posts, compute_trending_score #Katelyn's portion
+from datetime import datetime, timedelta
+
 
 def main():
     # Create a graph for testing (replace with your graph format)
@@ -24,11 +27,29 @@ def main():
     print("Group 2 function output goes here")
     print()
 
-    print("=== Group 3: Placeholder ===")
-    # TODO: Call Group 3’s function here
-    # Example: result = group3_function(graph)
-    print("Group 3 function output goes here")
+    print("=== Group 3: Trending Posts ===")
+    now = datetime.now()
+
+    # ex trend posts
+    posts = [
+        Post(1, "Dubai Chocolate!", {"age": 22, "gender": "female", "region": "Oahu"}, now - timedelta(hours=1), likes=50, comments=10),
+        Post(2, "Worst experience ever.", {"age": 22, "gender": "male", "region": "Oahu"}, now - timedelta(hours=2), likes=30, comments=15),
+        Post(3, "Matcha Latte", {"age": 25, "gender": "female", "region": "Maui"}, now - timedelta(hours=0.5), likes=20, comments=5),
+        Post(4, "I hate Labubus", {"age": 20, "gender": "female", "region": "Oahu"}, now - timedelta(hours=0.25), likes=10, comments=2)
+    ]
+
+    include_keywords = ["Matcha", "Dubai", "Worst"]
+    exclude_keywords = ["hate"]
+    user_filters = {"gender": "female", "region": "Oahu"}
+
+    filtered_posts = filter_posts(posts, include_keywords, exclude_keywords, user_filters)
+    trending = get_trending_posts(filtered_posts, now)
+
+    for p in trending:
+        score = compute_trending_score(p, now)
+        print(f"Post ID: {p.post_id} | Score: {score:.2f} | Content: \"{p.content}\"")
     print()
+
 
 if __name__ == "__main__":
     main()
