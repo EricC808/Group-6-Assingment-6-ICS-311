@@ -2,6 +2,7 @@
 
 from shortest_path import shortest_path_group1
 from trendPosts import Post, filter_posts, get_trending_posts, compute_trending_score #Katelyn's portion
+from interesting_users import User, get_interesting_users, print_interesting_users #Hailey's portion
 from datetime import datetime, timedelta
 
 
