@@ -21,10 +21,31 @@ def main():
     print(f"Shortest path from {start_node} to {end_node}: {path}, cost: {cost}")
     print()
 
-    print("=== Group 2: Placeholder ===")
+    print("=== Group 2: Interesting Users ===")
     # TODO: Call Group 2’s function here
     # Example: result = group2_function(graph)
-    print("Group 2 function output goes here")
+    user_A = User("user_A", age=22, gender="female", region="Oahu")
+    user_B = User("user_B", age=19, gender="female", region="Oahu")
+    user_C = User("user_C", age=31, gender="female", region="Maui")
+    user_D = User("user_D", age=26, gender="male", region="Oahu")
+    user_E = User("user_E", age=21, gender="female", region="Oahu")
+    user_F = User("user_F", age=24, gender="female", region="Oahu")
+
+    users = [user_A, user_B, user_C, user_D, user_E, user_F]
+
+    # Posts
+    user_A.authored_posts += ["Day at the beach", "Uni life", "GRWM", "OOTD", "Travel"]
+    user_F.authored_posts += ["Skull Panda Unboxing", "Formula 1", "Mukbang", "Dubai Chocolate"]
+    user_B.authored_posts += ["Bird watching"]
+
+    # Views
+    user_F.viewed_posts += ["Day at the beach", "Bird watching"]
+    user_A.viewed_posts += ["Bird watching"]
+    user_B.viewed_posts += ["Day at the Beach"]
+
+    # Output
+    interesting_users = get_interesting_users(users)
+    print_interesting_users(interesting_users)
     print()
 
     print("=== Group 3: Trending Posts ===")
